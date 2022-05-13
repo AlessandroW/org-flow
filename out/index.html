@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Org-Flow</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+        <!-- Place favicon.ico in the root directory -->
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">
+            You are using an <strong>outdated</strong> browser. Please
+            <a href="http://browsehappy.com/">upgrade your browser</a> to improve
+            your experience.
+            </p>
+        <![endif]-->
+
+        <h1>Inbox</h1>
+        <ul id="inbox-list">
+        </ul>
+        <button id="btn-inbox" onclick="readInbox()" type="button">Read Inbox</button>
+    </body>
+    <script>
+        const orgFlowPort = 15188;
+        const ws = new WebSocket(`ws://localhost:${orgFlowPort}`);
+        ws.onmessage = function (event) {
+            const msg = JSON.parse(event.data);
+            if (msg.result === "inbox") {
+                const ul = document.getElementById("inbox-list");
+                ul.innerHTML = '';
+                for (const item of msg.inbox) {
+                    const li = document.createElement("li");
+                    li.appendChild(document.createTextNode(item));
+                    ul.appendChild(li);
+                }
+            }
+            console.log(msg);
+
+        }
+
+        function readInbox() {
+            console.log("clicked");
+            return ws.send('{\"command\": \"inbox\"}')
+        }
+    </script>
+
+</html>
