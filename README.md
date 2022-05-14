@@ -1,5 +1,5 @@
 # Org-Flow: A Web Frontend For Org-Mode
-<img src="https://raw.githubusercontent.com/AlessandroW/org-flow/assets/logo.png" align="right" alt="Org-Flow Logo" width="256">
+<img src="https://github.com/AlessandroW/org-flow/raw/master/assets/logo.png" align="right" alt="Org-Flow Logo" width="256">
 Org-Flow is a frontend for working with Org-Mode.
 Inspired by [org-roam-ui](https://github.com/org-roam/org-roam-ui) Org-Flow aims to provide an alternative interface for Org-Mode.
 
