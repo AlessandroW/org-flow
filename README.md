@@ -9,6 +9,10 @@ Inspired by [org-roam-ui](https://github.com/org-roam/org-roam-ui) Org-Flow aims
 $ (add-to-list 'load-path "path/to/org-flow")
 (require 'org-flow)
 ```
+or with DOOM Emacs in your `packages.el`
+```elisp
+(package! org-flow :recipe (:host github :repo "AlessandroW/org-flow"))
+```
 
 ## Usage
 Start `org-flow` using `M-x org-flow-mode`.
